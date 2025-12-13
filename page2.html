@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Расчеты растворов</title>
+    <link rel="stylesheet" href="page2-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          Определение массы, молярности и массовой доли растворенного вещества
+        </h1>
+        <nav>
+          <a href="page1.html" class="nav-link"
+            >Страница 1: Предельный реагент</a
+          >
+          <a href="page2.html" class="nav-link active">Страница 2: Растворы</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Теория -->
+        <section class="theory">
+          <h2>Теоретическая справка</h2>
+          <div class="theory-content">
+            <h3>Основные формулы</h3>
+            <div class="formulas">
+              <div class="formula">
+                <h4>Молярность (M)</h4>
+                <p>M = n/V = m/(M×V)</p>
+                <p>
+                  где: n - количество вещества (моль), V - объем раствора (л), m
+                  - масса вещества (г), M - молярная масса (г/моль)
+                </p>
+              </div>
+
+              <div class="formula">
+                <h4>Массовая доля (ω)</h4>
+                <p>ω = m(вещества)/m(раствора) × 100%</p>
+                <p>
+                  где: m(вещества) - масса растворенного вещества (г),
+                  m(раствора) - общая масса раствора (г)
+                </p>
+              </div>
+
+              <div class="formula">
+                <h4>Масса вещества</h4>
+                <p>m = M × C × V</p>
+                <p>
+                  где: M - молярная масса (г/моль), C - молярность (моль/л), V -
+                  объем (л)
+                </p>
+              </div>
+            </div>
+
+            <h3>Практическое применение:</h3>
+            <ul>
+              <li>Приготовление растворов заданной концентрации</li>
+              <li>Анализ состава растворов</li>
+              <li>Расчеты для химических реакций в растворах</li>
+              <li>Контроль качества в лабораториях</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section class="calculator">
+          <h2>Калькулятор растворов</h2>
+
+          <!-- Табы для разных типов расчетов -->
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="mass-calc">
+              Расчет массы вещества
+            </button>
+            <button class="tab-btn" data-tab="molarity-calc">
+              Расчет молярности
+            </button>
+            <button class="tab-btn" data-tab="mass-fraction-calc">
+              Расчет массовой доли
+            </button>
+            <button class="tab-btn" data-tab="solution-prep-calc">
+              Приготовление раствора
+            </button>
+          </div>
+
+          <!-- Расчет массы вещества -->
+          <div id="mass-calc" class="tab-content active">
+            <h3>Расчет массы растворенного вещества</h3>
+            <form id="mass-form">
+              <div class="input-group">
+                <label for="mass-molarity"
+                  >Молярность раствора (М, моль/л):</label
+                >
+                <input
+                  type="number"
+                  id="mass-molarity"
+                  step="0.001"
+                  placeholder="1.5"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="mass-volume">Объем раствора (л):</label>
+                <input
+                  type="number"
+                  id="mass-volume"
+                  step="0.001"
+                  placeholder="0.5"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="mass-molar-mass"
+                  >Молярная масса вещества (г/моль):</label
+                >
+                <input
+                  type="number"
+                  id="mass-molar-mass"
+                  step="0.001"
+                  placeholder="58.5"
+                  required
+                />
+              </div>
+              <button type="submit">Рассчитать массу</button>
+            </form>
+            <div id="mass-result" class="result-section"></div>
+          </div>
+
+          <!-- Расчет молярности -->
+          <div id="molarity-calc" class="tab-content">
+            <h3>Расчет молярности раствора</h3>
+            <form id="molarity-form">
+              <div class="input-group">
+                <label for="molarity-mass"
+                  >Масса растворенного вещества (г):</label
+                >
+                <input
+                  type="number"
+                  id="molarity-mass"
+                  step="0.001"
+                  placeholder="29.25"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="molarity-molar-mass"
+                  >Молярная масса вещества (г/моль):</label
+                >
+                <input
+                  type="number"
+                  id="molarity-molar-mass"
+                  step="0.001"
+                  placeholder="58.5"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="molarity-volume">Объем раствора (л):</label>
+                <input
+                  type="number"
+                  id="molarity-volume"
+                  step="0.001"
+                  placeholder="0.5"
+                  required
+                />
+              </div>
+              <button type="submit">Рассчитать молярность</button>
+            </form>
+            <div id="molarity-result" class="result-section"></div>
+          </div>
+
+          <!-- Расчет массовой доли -->
+          <div id="mass-fraction-calc" class="tab-content">
+            <h3>Расчет массовой доли</h3>
+            <form id="mass-fraction-form">
+              <div class="input-group">
+                <label for="fraction-substance-mass"
+                  >Масса растворенного вещества (г):</label
+                >
+                <input
+                  type="number"
+                  id="fraction-substance-mass"
+                  step="0.001"
+                  placeholder="50"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="fraction-solution-mass">Масса раствора (г):</label>
+                <input
+                  type="number"
+                  id="fraction-solution-mass"
+                  step="0.001"
+                  placeholder="500"
+                  required
+                />
+              </div>
+              <button type="submit">Рассчитать массовую долю</button>
+            </form>
+            <div id="mass-fraction-result" class="result-section"></div>
+          </div>
+
+          <!-- Приготовление раствора -->
+          <div id="solution-prep-calc" class="tab-content">
+            <h3>Приготовление раствора заданной концентрации</h3>
+            <form id="solution-prep-form">
+              <div class="input-group">
+                <label for="prep-molarity"
+                  >Требуемая молярность (М, моль/л):</label
+                >
+                <input
+                  type="number"
+                  id="prep-molarity"
+                  step="0.001"
+                  placeholder="0.1"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="prep-volume"
+                  >Объем раствора для приготовления (л):</label
+                >
+                <input
+                  type="number"
+                  id="prep-volume"
+                  step="0.001"
+                  placeholder="1"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="prep-molar-mass"
+                  >Молярная масса вещества (г/моль):</label
+                >
+                <input
+                  type="number"
+                  id="prep-molar-mass"
+                  step="0.001"
+                  placeholder="58.5"
+                  required
+                />
+              </div>
+              <button type="submit">Рассчитать количество вещества</button>
+            </form>
+            <div id="solution-prep-result" class="result-section"></div>
+          </div>
+        </section>
+
+        <!-- Примеры задач -->
+        <section class="examples">
+          <h2>Примеры задач и их применение</h2>
+          <div class="example-problems">
+            <div class="example-problem">
+              <h3>Пример 1: Приготовление солевого раствора</h3>
+              <p>
+                <strong>Задача:</strong> Сколько граммов NaCl нужно для
+                приготовления 500 мл 0.9% раствора (физраствор)?
+              </p>
+              <p>
+                <strong>Применение:</strong> Медицина, приготовление
+                физиологического раствора
+              </p>
+              <button class="load-example" data-example="1">
+                Загрузить в калькулятор
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>Пример 2: Анализ раствора</h3>
+              <p>
+                <strong>Задача:</strong> Определить молярность раствора, если в
+                250 мл содержится 14.625 г NaCl
+              </p>
+              <p>
+                <strong>Применение:</strong> Аналитическая химия, контроль
+                качества
+              </p>
+              <button class="load-example" data-example="2">
+                Загрузить в калькулятор
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>Пример 3: Разбавление раствора</h3>
+              <p>
+                <strong>Задача:</strong> Как приготовить 100 мл 0.1 М раствора
+                HCl из 1 М раствора?
+              </p>
+              <p>
+                <strong>Применение:</strong> Лабораторная практика, титрование
+              </p>
+              <button class="load-example" data-example="3">
+                Загрузить в калькулятор
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>Пример 4: Промышленное применение</h3>
+              <p>
+                <strong>Задача:</strong> Рассчитать концентрацию раствора для
+                электролиза
+              </p>
+              <p>
+                <strong>Применение:</strong> Гальванотехника, очистка металлов
+              </p>
+              <button class="load-example" data-example="4">
+                Загрузить в калькулятор
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>Пример 5: Сельское хозяйство</h3>
+              <p>
+                <strong>Задача:</strong> Приготовление питательного раствора для
+                гидропоники
+              </p>
+              <p><strong>Применение:</strong> Выращивание растений без почвы</p>
+              <button class="load-example" data-example="5">
+                Загрузить в калькулятор
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Справочная информация -->
+        <section class="reference">
+          <h2>Справочная информация</h2>
+          <div class="reference-tables">
+            <div class="table-container">
+              <h3>Часто используемые соединения</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Вещество</th>
+                    <th>Формула</th>
+                    <th>Молярная масса (г/моль)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Хлорид натрия</td>
+                    <td>NaCl</td>
+                    <td>58.5</td>
+                  </tr>
+                  <tr>
+                    <td>Гидроксид натрия</td>
+                    <td>NaOH</td>
+                    <td>40.0</td>
+                  </tr>
+                  <tr>
+                    <td>Серная кислота</td>
+                    <td>H₂SO₄</td>
+                    <td>98.0</td>
+                  </tr>
+                  <tr>
+                    <td>Соляная кислота</td>
+                    <td>HCl</td>
+                    <td>36.5</td>
+                  </tr>
+                  <tr>
+                    <td>Глюкоза</td>
+                    <td>C₆H₁₂O₆</td>
+                    <td>180.0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="page2-script.js"></script>
+  </body>
+</html>

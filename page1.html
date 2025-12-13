@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Предельное количество реагента и процент выхода</title>
+    <link rel="stylesheet" href="page1-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Предельное количество реагента и процент выхода</h1>
+        <nav>
+          <a href="page1.html" class="nav-link active"
+            >Страница 1: Предельный реагент</a
+          >
+          <a href="page2.html" class="nav-link">Страница 2: Растворы</a>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Теория -->
+        <section class="theory">
+          <h2>Теоретическая справка</h2>
+          <div class="theory-content">
+            <h3>Предельное количество реагента (лимитирующий реагент)</h3>
+            <p>
+              Предельное количество реагента - это реагент, который полностью
+              расходуется в химической реакции и определяет максимальное
+              количество продукта, которое может быть получено.
+            </p>
+
+            <h3>Процент выхода</h3>
+            <p>
+              Процент выхода = (Фактический выход / Теоретический выход) × 100%
+            </p>
+
+            <h3>Пример применения:</h3>
+            <div class="example">
+              <p>
+                <strong>Задача:</strong> При взаимодействии 10 г водорода с 80 г
+                кислорода по уравнению:
+              </p>
+              <p class="equation">2H₂ + O₂ → 2H₂O</p>
+              <p>Определить лимитирующий реагент и теоретический выход воды.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section class="calculator">
+          <h2>Калькулятор</h2>
+          <form id="limiting-reagent-form">
+            <div class="input-group">
+              <label for="reaction-equation"
+                >Химическое уравнение реакции:</label
+              >
+              <input
+                type="text"
+                id="reaction-equation"
+                placeholder="например: 2H2 + O2 → 2H2O"
+                required
+              />
+            </div>
+
+            <div class="reagents-section">
+              <h3>Данные реагентов</h3>
+              <div id="reagents-container">
+                <div class="reagent-input" data-reagent="1">
+                  <h4>Реагент 1</h4>
+                  <label>Название:</label>
+                  <input
+                    type="text"
+                    class="reagent-name"
+                    placeholder="H₂"
+                    required
+                  />
+                  <label>Масса (г):</label>
+                  <input
+                    type="number"
+                    class="reagent-mass"
+                    step="0.001"
+                    placeholder="10"
+                    required
+                  />
+                  <label>Молярная масса (г/моль):</label>
+                  <input
+                    type="number"
+                    class="reagent-molar-mass"
+                    step="0.001"
+                    placeholder="2"
+                    required
+                  />
+                  <label>Коэффициент в уравнении:</label>
+                  <input
+                    type="number"
+                    class="reagent-coefficient"
+                    placeholder="2"
+                    required
+                  />
+                </div>
+
+                <div class="reagent-input" data-reagent="2">
+                  <h4>Реагент 2</h4>
+                  <label>Название:</label>
+                  <input
+                    type="text"
+                    class="reagent-name"
+                    placeholder="O₂"
+                    required
+                  />
+                  <label>Масса (г):</label>
+                  <input
+                    type="number"
+                    class="reagent-mass"
+                    step="0.001"
+                    placeholder="80"
+                    required
+                  />
+                  <label>Молярная масса (г/моль):</label>
+                  <input
+                    type="number"
+                    class="reagent-molar-mass"
+                    step="0.001"
+                    placeholder="32"
+                    required
+                  />
+                  <label>Коэффициент в уравнении:</label>
+                  <input
+                    type="number"
+                    class="reagent-coefficient"
+                    placeholder="1"
+                    required
+                  />
+                </div>
+              </div>
+              <button type="button" id="add-reagent">Добавить реагент</button>
+            </div>
+
+            <div class="input-group">
+              <h3>Данные продукта</h3>
+              <label for="product-name">Название продукта:</label>
+              <input type="text" id="product-name" placeholder="H₂O" required />
+
+              <label for="product-coefficient"
+                >Коэффициент продукта в уравнении:</label
+              >
+              <input
+                type="number"
+                id="product-coefficient"
+                placeholder="2"
+                required
+              />
+
+              <label for="product-molar-mass"
+                >Молярная масса продукта (г/моль):</label
+              >
+              <input
+                type="number"
+                id="product-molar-mass"
+                step="0.001"
+                placeholder="18"
+                required
+              />
+
+              <label for="actual-yield"
+                >Фактический выход продукта (г) - необязательно:</label
+              >
+              <input
+                type="number"
+                id="actual-yield"
+                step="0.001"
+                placeholder="для расчета % выхода"
+              />
+            </div>
+
+            <button type="submit">Рассчитать</button>
+          </form>
+
+          <div id="result" class="result-section"></div>
+        </section>
+
+        <!-- Примеры задач -->
+        <section class="examples">
+          <h2>Примеры задач</h2>
+          <div class="example-problems">
+            <div class="example-problem">
+              <h3>Пример 1: Синтез аммиака</h3>
+              <p>
+                <strong>Условие:</strong> 28 г азота реагирует с 9 г водорода по
+                уравнению:
+              </p>
+              <p class="equation">N₂ + 3H₂ → 2NH₃</p>
+              <p>
+                <strong>Найти:</strong> лимитирующий реагент и максимальную
+                массу NH₃
+              </p>
+              <button class="load-example" data-example="1">
+                Загрузить в калькулятор
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>Пример 2: Горение метана</h3>
+              <p>
+                <strong>Условие:</strong> 16 г метана сжигается в 96 г
+                кислорода:
+              </p>
+              <p class="equation">CH₄ + 2O₂ → CO₂ + 2H₂O</p>
+              <p><strong>Найти:</strong> лимитирующий реагент и выход CO₂</p>
+              <button class="load-example" data-example="2">
+                Загрузить в калькулятор
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>Пример 3: Процент выхода</h3>
+              <p>
+                <strong>Условие:</strong> При реакции получили 15 г продукта
+                вместо теоретических 20 г
+              </p>
+              <p><strong>Найти:</strong> процент выхода реакции</p>
+              <button class="load-example" data-example="3">
+                Загрузить в калькулятор
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="page1-script.js"></script>
+  </body>
+</html>
