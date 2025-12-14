@@ -1,132 +1,226 @@
 <!DOCTYPE html>
 <html lang="kk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Шектеуші реагент және шығымның пайызы</title>
-    <link rel="stylesheet" href="page1-styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="page1-styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Шектеуші реагент және шығымның пайызы</h1>
-            <nav>
-                <a href="page1.html" class="nav-link active">1-бет: Шектеуші реагент</a>
-                <a href="page2.html" class="nav-link">2-бет: Ерітінділер</a>
-            </nav>
-        </header>
+      <header>
+        <h1>Шектеуші реагент және шығымның пайызы</h1>
+        <nav>
+          <a href="page1.html" class="nav-link active"
+            >1-бет: Шектеуші реагент</a
+          >
+          <a href="page2.html" class="nav-link">2-бет: Ерітінділер</a>
+        </nav>
+      </header>
 
-        <main>
-            <!-- Теория -->
-            <section class="theory">
-                <h2>Теориялық анықтама</h2>
-                <div class="theory-content">
-                    <h3>Шектеуші реагент (шектеуші реактив)</h3>
-                    <p>Шектеуші реагент - химиялық реакцияда толық жұмсалатын және алуға болатын өнімнің ең көп мөлшерін анықтайтын реактив.</p>
-                    
-                    <h3>Шығымның пайызы</h3>
-                    <p>Шығымның пайызы = (Нақты шығым / Теориялық шығым) × 100%</p>
-                    
-                    <h3>Қолдану мысалы:</h3>
-                    <div class="example">
-                        <p><strong>Есеп:</strong> 10 г сутегі мен 80 г оттегінің теңдеу бойынша әрекеттесуі кезінде:</p>
-                        <p class="equation">2H₂ + O₂ → 2H₂O</p>
-                        <p>Шектеуші реагентті және судың теориялық шығымын анықтаңыз.</p>
-                    </div>
+      <main>
+        <!-- Теория -->
+        <section class="theory">
+          <h2>Теориялық анықтама</h2>
+          <div class="theory-content">
+            <h3>Шектеуші реагент (шектеуші реактив)</h3>
+            <p>
+              Шектеуші реагент - химиялық реакцияда толық жұмсалатын және алуға
+              болатын өнімнің ең көп мөлшерін анықтайтын реактив.
+            </p>
+
+            <h3>Шығымның пайызы</h3>
+            <p>Шығымның пайызы = (Нақты шығым / Теориялық шығым) × 100%</p>
+
+            <h3>Қолдану мысалы:</h3>
+            <div class="example">
+              <p>
+                <strong>Есеп:</strong> 10 г сутегі мен 80 г оттегінің теңдеу
+                бойынша әрекеттесуі кезінде:
+              </p>
+              <p class="equation">2H₂ + O₂ → 2H₂O</p>
+              <p>Шектеуші реагентті және судың теориялық шығымын анықтаңыз.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section class="calculator">
+          <h2>Калькулятор</h2>
+          <form id="limiting-reagent-form">
+            <div class="input-group">
+              <label for="reaction-equation">Химиялық реакция теңдеуі:</label>
+              <input
+                type="text"
+                id="reaction-equation"
+                placeholder="мысалы: 2H2 + O2 → 2H2O"
+                required
+              />
+            </div>
+
+            <div class="reagents-section">
+              <h3>Реагенттер деректері</h3>
+              <div id="reagents-container">
+                <div class="reagent-input" data-reagent="1">
+                  <h4>1-реагент</h4>
+                  <label>Атауы:</label>
+                  <input
+                    type="text"
+                    class="reagent-name"
+                    placeholder="H₂"
+                    required
+                  />
+                  <label>Массасы (г):</label>
+                  <input
+                    type="number"
+                    class="reagent-mass"
+                    step="0.001"
+                    placeholder="10"
+                    required
+                  />
+                  <label>Молярлық массасы (г/моль):</label>
+                  <input
+                    type="number"
+                    class="reagent-molar-mass"
+                    step="0.001"
+                    placeholder="2"
+                    required
+                  />
+                  <label>Теңдеудегі коэффициенті:</label>
+                  <input
+                    type="number"
+                    class="reagent-coefficient"
+                    placeholder="2"
+                    required
+                  />
                 </div>
-            </section>
 
-            <!-- Калькулятор -->
-            <section class="calculator">
-                <h2>Калькулятор</h2>
-                <form id="limiting-reagent-form">
-                    <div class="input-group">
-                        <label for="reaction-equation">Химиялық реакция теңдеуі:</label>
-                        <input type="text" id="reaction-equation" placeholder="мысалы: 2H2 + O2 → 2H2O" required>
-                    </div>
-
-                    <div class="reagents-section">
-                        <h3>Реагенттер деректері</h3>
-                        <div id="reagents-container">
-                            <div class="reagent-input" data-reagent="1">
-                                <h4>1-реагент</h4>
-                                <label>Атауы:</label>
-                                <input type="text" class="reagent-name" placeholder="H₂" required>
-                                <label>Массасы (г):</label>
-                                <input type="number" class="reagent-mass" step="0.001" placeholder="10" required>
-                                <label>Молярлық массасы (г/моль):</label>
-                                <input type="number" class="reagent-molar-mass" step="0.001" placeholder="2" required>
-                                <label>Теңдеудегі коэффициенті:</label>
-                                <input type="number" class="reagent-coefficient" placeholder="2" required>
-                            </div>
-
-                            <div class="reagent-input" data-reagent="2">
-                                <h4>2-реагент</h4>
-                                <label>Атауы:</label>
-                                <input type="text" class="reagent-name" placeholder="O₂" required>
-                                <label>Массасы (г):</label>
-                                <input type="number" class="reagent-mass" step="0.001" placeholder="80" required>
-                                <label>Молярлық массасы (г/моль):</label>
-                                <input type="number" class="reagent-molar-mass" step="0.001" placeholder="32" required>
-                                <label>Теңдеудегі коэффициенті:</label>
-                                <input type="number" class="reagent-coefficient" placeholder="1" required>
-                            </div>
-                        </div>
-                        <button type="button" id="add-reagent">Реагент қосу</button>
-                    </div>
-
-                    <div class="input-group">
-                        <h3>Өнім деректері</h3>
-                        <label for="product-name">Өнім атауы:</label>
-                        <input type="text" id="product-name" placeholder="H₂O" required>
-                        
-                        <label for="product-coefficient">Теңдеудегі өнім коэффициенті:</label>
-                        <input type="number" id="product-coefficient" placeholder="2" required>
-                        
-                        <label for="product-molar-mass">Өнімнің молярлық массасы (г/моль):</label>
-                        <input type="number" id="product-molar-mass" step="0.001" placeholder="18" required>
-                        
-                        <label for="actual-yield">Нақты өнім шығымы (г) - міндетті емес:</label>
-                        <input type="number" id="actual-yield" step="0.001" placeholder="% шығымын есептеу үшін">
-                    </div>
-
-                    <button type="submit">Есептеу</button>
-                </form>
-
-                <div id="result" class="result-section"></div>
-            </section>
-
-            <!-- Есептер мысалдары -->
-            <section class="examples">
-                <h2>Есептер мысалдары</h2>
-                <div class="example-problems">
-                    <div class="example-problem">
-                        <h3>1-мысал: Аммиак синтезі</h3>
-                        <p><strong>Есеп:</strong> 28 г азот пен 9 г сутегі теңдеу бойынша әрекеттеседі:</p>
-                        <p class="equation">N₂ + 3H₂ → 2NH₃</p>
-                        <p><strong>Табу:</strong> шектеуші реагент және NH₃-тің ең көп массасы</p>
-                        <button class="load-example" data-example="1">Калькуляторға жүктеу</button>
-                    </div>
-
-                    <div class="example-problem">
-                        <h3>2-мысал: Метан жануы</h3>
-                        <p><strong>Есеп:</strong> 16 г метан 96 г оттегімен жанады:</p>
-                        <p class="equation">CH₄ + 2O₂ → CO₂ + 2H₂O</p>
-                        <p><strong>Табу:</strong> шектеуші реагент және CO₂ шығымы</p>
-                        <button class="load-example" data-example="2">Калькуляторға жүктеу</button>
-                    </div>
-
-                    <div class="example-problem">
-                        <h3>3-мысал: Шығымның пайызы</h3>
-                        <p><strong>Есеп:</strong> Реакция нәтижесінде теориялық 20 г орнына 15 г өнім алынды</p>
-                        <p><strong>Табу:</strong> реакцияның шығым пайызы</p>
-                        <button class="load-example" data-example="3">Калькуляторға жүктеу</button>
-                    </div>
+                <div class="reagent-input" data-reagent="2">
+                  <h4>2-реагент</h4>
+                  <label>Атауы:</label>
+                  <input
+                    type="text"
+                    class="reagent-name"
+                    placeholder="O₂"
+                    required
+                  />
+                  <label>Массасы (г):</label>
+                  <input
+                    type="number"
+                    class="reagent-mass"
+                    step="0.001"
+                    placeholder="80"
+                    required
+                  />
+                  <label>Молярлық массасы (г/моль):</label>
+                  <input
+                    type="number"
+                    class="reagent-molar-mass"
+                    step="0.001"
+                    placeholder="32"
+                    required
+                  />
+                  <label>Теңдеудегі коэффициенті:</label>
+                  <input
+                    type="number"
+                    class="reagent-coefficient"
+                    placeholder="1"
+                    required
+                  />
                 </div>
-            </section>
-        </main>
+              </div>
+              <button type="button" id="add-reagent">Реагент қосу</button>
+            </div>
+
+            <div class="input-group">
+              <h3>Өнім деректері</h3>
+              <label for="product-name">Өнім атауы:</label>
+              <input type="text" id="product-name" placeholder="H₂O" required />
+
+              <label for="product-coefficient"
+                >Теңдеудегі өнім коэффициенті:</label
+              >
+              <input
+                type="number"
+                id="product-coefficient"
+                placeholder="2"
+                required
+              />
+
+              <label for="product-molar-mass"
+                >Өнімнің молярлық массасы (г/моль):</label
+              >
+              <input
+                type="number"
+                id="product-molar-mass"
+                step="0.001"
+                placeholder="18"
+                required
+              />
+
+              <label for="actual-yield"
+                >Нақты өнім шығымы (г) - міндетті емес:</label
+              >
+              <input
+                type="number"
+                id="actual-yield"
+                step="0.001"
+                placeholder="% шығымын есептеу үшін"
+              />
+            </div>
+
+            <button type="submit">Есептеу</button>
+          </form>
+
+          <div id="result" class="result-section"></div>
+        </section>
+
+        <!-- Есептер мысалдары -->
+        <section class="examples">
+          <h2>Есептер мысалдары</h2>
+          <div class="example-problems">
+            <div class="example-problem">
+              <h3>1-мысал: Аммиак синтезі</h3>
+              <p>
+                <strong>Есеп:</strong> 28 г азот пен 9 г сутегі теңдеу бойынша
+                әрекеттеседі:
+              </p>
+              <p class="equation">N₂ + 3H₂ → 2NH₃</p>
+              <p>
+                <strong>Табу:</strong> шектеуші реагент және NH₃-тің ең көп
+                массасы
+              </p>
+              <button class="load-example" data-example="1">
+                Калькуляторға жүктеу
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>2-мысал: Метан жануы</h3>
+              <p><strong>Есеп:</strong> 16 г метан 96 г оттегімен жанады:</p>
+              <p class="equation">CH₄ + 2O₂ → CO₂ + 2H₂O</p>
+              <p><strong>Табу:</strong> шектеуші реагент және CO₂ шығымы</p>
+              <button class="load-example" data-example="2">
+                Калькуляторға жүктеу
+              </button>
+            </div>
+
+            <div class="example-problem">
+              <h3>3-мысал: Шығымның пайызы</h3>
+              <p>
+                <strong>Есеп:</strong> Реакция нәтижесінде теориялық 20 г орнына
+                15 г өнім алынды
+              </p>
+              <p><strong>Табу:</strong> реакцияның шығым пайызы</p>
+              <button class="load-example" data-example="3">
+                Калькуляторға жүктеу
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
     <script src="page1-script.js"></script>
-</body>
+  </body>
 </html>

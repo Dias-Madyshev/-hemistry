@@ -1,22 +1,22 @@
 // Химия калькуляторларының негізгі беті - Қазақша
 
 // Бетті жүктеу анимациясы
-document.addEventListener('DOMContentLoaded', function() {
-    // Жүктелу хабарламасы
-    showMessage('Химия калькуляторларына қош келдіңіз!');
-    
-    // Бөлшектер эффектісін қосу
-    createParticles();
-    
-    // Картаға hover эффектісін қосу
-    addCardHoverEffects();
-});
+document.addEventListener('DOMContentLoaded', function () {
+  // Жүктелу хабарламасы
+  showMessage('Химия калькуляторларына қош келдіңіз!')
+
+  // Бөлшектер эффектісін қосу
+  createParticles()
+
+  // Картаға hover эффектісін қосу
+  addCardHoverEffects()
+})
 
 // Хабарламаларды көрсету функциясы
 function showMessage(message, isError = false) {
-    const messageDiv = document.createElement('div');
-    messageDiv.textContent = message;
-    messageDiv.style.cssText = `
+  const messageDiv = document.createElement('div')
+  messageDiv.textContent = message
+  messageDiv.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
@@ -25,30 +25,34 @@ function showMessage(message, isError = false) {
         color: white;
         z-index: 1000;
         font-weight: 500;
-        background: ${isError ? 'linear-gradient(135deg, #ff6b6b, #ee5a24)' : 'linear-gradient(135deg, #00d2d3, #54a0ff)'};
+        background: ${
+          isError
+            ? 'linear-gradient(135deg, #ff6b6b, #ee5a24)'
+            : 'linear-gradient(135deg, #00d2d3, #54a0ff)'
+        };
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         transform: translateX(400px);
         transition: transform 0.3s ease;
-    `;
-    
-    document.body.appendChild(messageDiv);
-    
+    `
+
+  document.body.appendChild(messageDiv)
+
+  setTimeout(() => {
+    messageDiv.style.transform = 'translateX(0)'
+  }, 100)
+
+  setTimeout(() => {
+    messageDiv.style.transform = 'translateX(400px)'
     setTimeout(() => {
-        messageDiv.style.transform = 'translateX(0)';
-    }, 100);
-    
-    setTimeout(() => {
-        messageDiv.style.transform = 'translateX(400px)';
-        setTimeout(() => {
-            document.body.removeChild(messageDiv);
-        }, 300);
-    }, 3000);
+      document.body.removeChild(messageDiv)
+    }, 300)
+  }, 3000)
 }
 
 // Бөлшектер анимациясын жасау
 function createParticles() {
-    const particleContainer = document.createElement('div');
-    particleContainer.style.cssText = `
+  const particleContainer = document.createElement('div')
+  particleContainer.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
@@ -56,17 +60,17 @@ function createParticles() {
         height: 100%;
         pointer-events: none;
         z-index: -1;
-    `;
-    document.body.appendChild(particleContainer);
-    
-    for (let i = 0; i < 50; i++) {
-        createParticle(particleContainer);
-    }
+    `
+  document.body.appendChild(particleContainer)
+
+  for (let i = 0; i < 50; i++) {
+    createParticle(particleContainer)
+  }
 }
 
 function createParticle(container) {
-    const particle = document.createElement('div');
-    particle.style.cssText = `
+  const particle = document.createElement('div')
+  particle.style.cssText = `
         position: absolute;
         width: 2px;
         height: 2px;
@@ -75,20 +79,20 @@ function createParticle(container) {
         animation: float ${Math.random() * 3 + 2}s infinite linear;
         left: ${Math.random() * 100}%;
         animation-delay: ${Math.random() * 2}s;
-    `;
-    
-    container.appendChild(particle);
-    
-    // Анимация аяқталғаннан кейін бөлшекті жою
-    setTimeout(() => {
-        if (container.contains(particle)) {
-            container.removeChild(particle);
-        }
-    }, 5000);
+    `
+
+  container.appendChild(particle)
+
+  // Анимация аяқталғаннан кейін бөлшекті жою
+  setTimeout(() => {
+    if (container.contains(particle)) {
+      container.removeChild(particle)
+    }
+  }, 5000)
 }
 
 // CSS анимациясын қосу
-const style = document.createElement('style');
+const style = document.createElement('style')
 style.textContent = `
     @keyframes float {
         0% {
@@ -106,45 +110,45 @@ style.textContent = `
             opacity: 0;
         }
     }
-`;
-document.head.appendChild(style);
+`
+document.head.appendChild(style)
 
 // Карталарға hover эффектісін қосу
 function addCardHoverEffects() {
-    const cards = document.querySelectorAll('.calculator-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '0 8px 32px 0 rgba(31, 38, 135, 0.37)';
-        });
-        
-        card.addEventListener('click', function() {
-            const link = this.querySelector('a');
-            if (link) {
-                showMessage(`${link.textContent} бетіне өтуде...`);
-                setTimeout(() => {
-                    window.location.href = link.href;
-                }, 500);
-            }
-        });
-    });
+  const cards = document.querySelectorAll('.calculator-card')
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function () {
+      this.style.transform = 'translateY(-10px) scale(1.02)'
+      this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)'
+    })
+
+    card.addEventListener('mouseleave', function () {
+      this.style.transform = 'translateY(0) scale(1)'
+      this.style.boxShadow = '0 8px 32px 0 rgba(31, 38, 135, 0.37)'
+    })
+
+    card.addEventListener('click', function () {
+      const link = this.querySelector('a')
+      if (link) {
+        showMessage(`${link.textContent} бетіне өтуде...`)
+        setTimeout(() => {
+          window.location.href = link.href
+        }, 500)
+      }
+    })
+  })
 }
 
 // Қосымша интерактивтілік
-document.addEventListener('click', function(e) {
-    // Клик эффектісі
-    createClickEffect(e.clientX, e.clientY);
-});
+document.addEventListener('click', function (e) {
+  // Клик эффектісі
+  createClickEffect(e.clientX, e.clientY)
+})
 
 function createClickEffect(x, y) {
-    const ripple = document.createElement('div');
-    ripple.style.cssText = `
+  const ripple = document.createElement('div')
+  ripple.style.cssText = `
         position: fixed;
         left: ${x}px;
         top: ${y}px;
@@ -156,17 +160,17 @@ function createClickEffect(x, y) {
         animation: ripple 0.6s ease-out;
         pointer-events: none;
         z-index: 1000;
-    `;
-    
-    document.body.appendChild(ripple);
-    
-    setTimeout(() => {
-        document.body.removeChild(ripple);
-    }, 600);
+    `
+
+  document.body.appendChild(ripple)
+
+  setTimeout(() => {
+    document.body.removeChild(ripple)
+  }, 600)
 }
 
 // Ripple анимациясын қосу
-const rippleStyle = document.createElement('style');
+const rippleStyle = document.createElement('style')
 rippleStyle.textContent = `
     @keyframes ripple {
         0% {
@@ -178,46 +182,46 @@ rippleStyle.textContent = `
             opacity: 0;
         }
     }
-`;
-document.head.appendChild(rippleStyle);
+`
+document.head.appendChild(rippleStyle)
 
 // Пернетақта навигациясы
-document.addEventListener('keydown', function(e) {
-    switch(e.key) {
-        case '1':
-            window.location.href = 'page1.html';
-            break;
-        case '2':
-            window.location.href = 'page2.html';
-            break;
-        case 'Escape':
-            showMessage('Басты бетте орналасып тұрсыз');
-            break;
-    }
-});
+document.addEventListener('keydown', function (e) {
+  switch (e.key) {
+    case '1':
+      window.location.href = 'page1.html'
+      break
+    case '2':
+      window.location.href = 'page2.html'
+      break
+    case 'Escape':
+      showMessage('Басты бетте орналасып тұрсыз')
+      break
+  }
+})
 
 // Мобильді құрылғылар үшін touch эффектісі
-document.addEventListener('touchstart', function(e) {
-    if (e.touches.length === 1) {
-        const touch = e.touches[0];
-        createClickEffect(touch.clientX, touch.clientY);
-    }
-});
+document.addEventListener('touchstart', function (e) {
+  if (e.touches.length === 1) {
+    const touch = e.touches[0]
+    createClickEffect(touch.clientX, touch.clientY)
+  }
+})
 
 // Скролл эффектісі
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallax = scrolled * 0.5;
-    
-    document.body.style.backgroundPositionY = parallax + 'px';
-});
+window.addEventListener('scroll', function () {
+  const scrolled = window.pageYOffset
+  const parallax = scrolled * 0.5
+
+  document.body.style.backgroundPositionY = parallax + 'px'
+})
 
 // Қосымша визуалды эффекттер
-setInterval(createFloatingParticle, 3000);
+setInterval(createFloatingParticle, 3000)
 
 function createFloatingParticle() {
-    const particle = document.createElement('div');
-    particle.style.cssText = `
+  const particle = document.createElement('div')
+  particle.style.cssText = `
         position: fixed;
         width: ${Math.random() * 4 + 1}px;
         height: ${Math.random() * 4 + 1}px;
@@ -228,19 +232,19 @@ function createFloatingParticle() {
         animation: floatUp ${Math.random() * 4 + 3}s linear;
         pointer-events: none;
         z-index: -1;
-    `;
-    
-    document.body.appendChild(particle);
-    
-    setTimeout(() => {
-        if (document.body.contains(particle)) {
-            document.body.removeChild(particle);
-        }
-    }, 7000);
+    `
+
+  document.body.appendChild(particle)
+
+  setTimeout(() => {
+    if (document.body.contains(particle)) {
+      document.body.removeChild(particle)
+    }
+  }, 7000)
 }
 
 // Float up анимациясы
-const floatUpStyle = document.createElement('style');
+const floatUpStyle = document.createElement('style')
 floatUpStyle.textContent = `
     @keyframes floatUp {
         0% {
@@ -258,5 +262,5 @@ floatUpStyle.textContent = `
             opacity: 0;
         }
     }
-`;
-document.head.appendChild(floatUpStyle);
+`
+document.head.appendChild(floatUpStyle)
